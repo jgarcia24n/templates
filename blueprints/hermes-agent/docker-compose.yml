@@ -14,22 +14,20 @@ services:
       # uncomment BOTH lines (API_SERVER_KEY is mandatory for auth):
       # - API_SERVER_HOST=0.0.0.0
       # - API_SERVER_KEY=${API_SERVER_KEY}
-      # Microsoft Teams — uncomment and fill in to enable Teams gateway.
-      # Register your bot at https://dev.botframework.com/ to get these values.
-      # - TEAMS_CLIENT_ID=${TEAMS_CLIENT_ID}
-      # - TEAMS_CLIENT_SECRET=${TEAMS_CLIENT_SECRET}
-      # - TEAMS_TENANT_ID=${TEAMS_TENANT_ID}
-      # - TEAMS_ALLOWED_USERS=${TEAMS_ALLOWED_USERS}
-      # - TEAMS_PORT=${TEAMS_PORT:-3978}
-      # Google Chat — uncomment and fill in to enable the Google Chat gateway.
-      # See website/docs/user-guide/messaging/google_chat.md for the full setup.
-      # The SA JSON path must point to a file mounted into the container —
-      # add a volume entry above (e.g. ``- ~/.hermes/google-chat-sa.json:/secrets/google-chat-sa.json:ro``)
-      # then set GOOGLE_CHAT_SERVICE_ACCOUNT_JSON to that mount path.
-      # - GOOGLE_CHAT_PROJECT_ID=${GOOGLE_CHAT_PROJECT_ID}
-      # - GOOGLE_CHAT_SUBSCRIPTION_NAME=${GOOGLE_CHAT_SUBSCRIPTION_NAME}
-      # - GOOGLE_CHAT_SERVICE_ACCOUNT_JSON=${GOOGLE_CHAT_SERVICE_ACCOUNT_JSON}
-      # - GOOGLE_CHAT_ALLOWED_USERS=${GOOGLE_CHAT_ALLOWED_USERS}
+# LLMs
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      # Tools
+      - EXA_API_KEY=${EXA_API_KEY}
+      - FIRECRAWL_API_KEY=${FIRECRAWL_API_KEY}
+      - FAL_KEY=${FAL_KEY}
+      # Chat Integrations
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_ALLOWED_USERS=${TELEGRAM_ALLOWED_USERS}
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - SLACK_APP_TOKEN=${SLACK_APP_TOKEN}
 
   dashboard:
     image: nousresearch/hermes-agent:latest
@@ -42,6 +40,7 @@ services:
     environment:
       - HERMES_UID=${HERMES_UID:-10000}
       - HERMES_GID=${HERMES_GID:-10000}
+      - HERMES_DASHBOARD_HOST=${HERMES_DASHBOARD_HOST}
     # Localhost-only. For remote access, tunnel via `ssh -L 9119:localhost:9119`.
     command: ["dashboard", "--host", "127.0.0.1", "--no-open"]
     
