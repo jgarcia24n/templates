@@ -2936,6 +2936,19 @@
     ]
   },
   {
+    "id": "hermes-agent",
+    "name": "Hermes Agent",
+    "version": "latest",
+    "description": "An autonomous agent that lives on your server, remembers what it learns, and gets more capable the longer it runs.",
+    "logo": "logo.png",
+    "links": {
+      "github": "https://github.com/NousResearch/hermes-agent",
+      "website": "https://hermes-agent.nousresearch.com/",
+      "docs": "https://hermes-agent.nousresearch.com/docs"
+    },
+    "tags": ["ai", "agents", "automation", "chatbot", "self-hosted"]
+  },
+  {
     "id": "heyform",
     "name": "HeyForm",
     "version": "latest",
