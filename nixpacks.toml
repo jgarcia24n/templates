@@ -1,0 +1,12 @@
+[phases.setup]
+nixPkgs = ["nodejs", "pnpm"]
+
+[phases.install]
+cmds = ["cd app && pnpm install"]
+
+[phases.build]
+cmds = ["cd app && pnpm run build"]
+
+# Add this start block to keep the Vite container alive and listening
+[start]
+cmd = "cd app && pnpm run dev -- --host 0.0.0.0"
