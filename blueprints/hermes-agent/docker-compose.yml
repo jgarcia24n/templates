@@ -32,7 +32,6 @@ services:
 
   dashboard:
     image: nousresearch/hermes-agent:latest
-    container_name: hermes-dashboard
     restart: unless-stopped
     ports:
       - 9119
