@@ -1,0 +1,30 @@
+[variables]
+main_domain = "${domain}"
+
+[config]
+env = [
+  "HERMES_UID=10000",
+  "HERMES_GID=10000",
+  "HERMES_DASHBOARD_HOST=${main_domain}",
+  
+  # --- Core LLM Providers ---
+  "OPENROUTER_API_KEY=",
+  "OPENAI_API_KEY=",
+  "ANTHROPIC_API_KEY=",
+  "GOOGLE_API_KEY=",        # Gemini API key slot
+  
+  # --- Highly Recommended Tools ---
+  "EXA_API_KEY=",          # AI-native web search
+  "FIRECRAWL_API_KEY=",    # Advanced web scraping
+  "FAL_KEY=",             # Stable Diffusion / Image generation
+  
+  # --- Primary Chat Integrations ---
+  "TELEGRAM_BOT_TOKEN=",
+  "TELEGRAM_ALLOWED_USERS="
+]
+mounts = []
+
+[[config.domains]]
+serviceName = "dashboard"
+port = 9119
+host = "${main_domain}"
