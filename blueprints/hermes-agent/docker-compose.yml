@@ -2,9 +2,10 @@ version: '3.8'
 services:
   gateway:
     image: nousresearch/hermes-agent:latest
-    container_name: hermes-gateway
     restart: unless-stopped
     command: ["gateway", "run"]
+    ports:
+      - 8642
     volumes:
       - hermes_data:/opt/data
     environment:
@@ -33,6 +34,8 @@ services:
     image: nousresearch/hermes-agent:latest
     container_name: hermes-dashboard
     restart: unless-stopped
+    ports:
+      - 9119
     depends_on:
       - gateway
     volumes:
